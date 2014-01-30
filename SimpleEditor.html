@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+        <!--Jeremy Eberhardt and Josh Chapman-->
+<html>
+<script> src="functions.js"</script>
+<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script>
+    $('body').text().highlight('my text to highlight');
+</script>
+
+<head>
+    <title>Text Editor</title>
+</head>
+<body>
+<form>
+    <input type="button" id="Save" value="Save" onClick="changeBackground('red')" /><br />
+    <input type="button" id="Undo" value="Undo" onClick="changeBackground('white')" /><br />
+    <input type="button" id="Redo" value="Redo" onClick="changeBackground('red')" /><br />
+    <br />
+    <br />
+    <input type="button" id="Search" value="Search" onClick="highlight('Search.val')" /><br />
+</form>
+<form>
+    <input type="text" name="Search" size="15"><br>
+</form>
+<form>
+    <input type="text" name="TextEditor" size="300"><br>
+</form>
+</body>
+</html>
