@@ -3,28 +3,70 @@
 <html>
 <script> src="functions.js"</script>
 <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
 <script>
-    $('body').text().highlight('my text to highlight');
+$(document).ready(function() {
+    $("#Count").click(function(){
+        $("#Count").val($("#TextEditor").val().length);
+    });
+
+    $("#TextColor").click(function(){
+        $("#TextEditor").css('color', 'green');
+    });
+
+    $("#TextBackgroundColor").click(function(){
+        $("#TextEditor").css('backgroundColor', 'red');
+    });
+
+    $("#FontUp").click(function(){
+        $("#TextEditor").css('font-size', 'larger');
+    });
+
+    $("#FontDown").click(function(){
+        $("#TextEditor").css('font-size', 'smaller');
+    });
+
+    $("#Search").click(function(){
+        $("#Searched").text(($("#TextEditor").val()));
+       // $("#Searched").text().highlight("#Search".val());
+    });
+
+    $("#Save").click(function(){
+        addState("#TextEditor".val());
+    });
+
+    $("#Undo").click(function(){
+        $("#TextEditor").val(getState());
+    });
+});
 </script>
+
+
 
 <head>
     <title>Text Editor</title>
 </head>
 <body>
 <form>
-    <input type="button" id="Save" value="Save" onClick="changeBackground('red')" /><br />
-    <input type="button" id="Undo" value="Undo" onClick="changeBackground('white')" /><br />
-    <input type="button" id="Redo" value="Redo" onClick="changeBackground('red')" /><br />
+    <input type="button" id="Save" value="Save" /><br />
+    <input type="button" id="Undo" value="Undo" /><br />
+    <input type="button" id="Redo" value="Redo" /><br />
+    <input type="button" id="Count" value="Count" /><br />
+    <input type="button" id="FontUp" value="FontUp" /><br />
+    <input type="button" id="FontDown" value="FontDown" /><br />
+    <input type="button" id="TextColor" value="TextColor" /><br />
+    <input type="button" id="TextBackgroundColor" value="TextBackgroundColor" /><br />
     <br />
     <br />
-    <input type="button" id="Search" value="Search" onClick="highlight('Search.val')" /><br />
+    <input type="button" id="Search" value="Search" /><br />
 </form>
 <form>
-    <input type="text" name="Search" size="15"><br>
+    <input type="text" id="SearchText" size="15" value ="" /><br>
 </form>
+
+   <p id="Searched"></p>
+
 <form>
-    <input type="text" name="TextEditor" size="300"><br>
+    <input type="text" id="TextEditor" value="" size="300" /><br>
 </form>
 </body>
 </html>
