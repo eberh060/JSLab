@@ -7,7 +7,7 @@ function searchFor(what, where) { <!--returns the index-->
     return where.indexOf(what);
 }
 
-function makeObject(start){
+/*function makeObject(start){
     var state=start;
     var saveStates = new Array();
 
@@ -27,11 +27,36 @@ function makeObject(start){
     function getState(){
         return saveStates[saveStates.length - 1];
     }
+}*/
+
+function makeObject(){
+    var currentState="";
+    var toRedo;
+    var afterUndo;
+
+    return{
+        getCurrentState: function(){return currentState}
+    };
+
+    function save(newState){
+        currentState = newState;
+    }
+    function undo(newState){
+        toRedo = newState;
+        afterUndo = state;
+    }
+    function redo(){
+        currentState = toRedo;
+    }
+/*    function getCurrentState(){
+        return currentState;
+    }*/
 }
 
-//function highlight(search){
-//    return "$('body').text().highlight('" + search + "my text to highlight')";
-//}
+function highlight(search){
+    return "$('body').text().highlight('" + search + "my text to highlight')";
+}
 
 module.exports.searchFor = searchFor;
+module.exports.makeObject = makeObject;
 //module.exports.highlight = highlight;

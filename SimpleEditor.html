@@ -1,48 +1,57 @@
 <!DOCTYPE html>
-        <!--Jeremy Eberhardt and Josh Chapman-->
 <html>
-<script> src="functions.js"</script>
-<script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $("#Count").click(function(){
-        $("#Count").val($("#TextEditor").val().length);
-    });
-
-    $("#TextColor").click(function(){
-        $("#TextEditor").css('color', 'green');
-    });
-
-    $("#TextBackgroundColor").click(function(){
-        $("#TextEditor").css('backgroundColor', 'red');
-    });
-
-    $("#FontUp").click(function(){
-        $("#TextEditor").css('font-size', 'larger');
-    });
-
-    $("#FontDown").click(function(){
-        $("#TextEditor").css('font-size', 'smaller');
-    });
-
-    $("#Search").click(function(){
-        $("#Searched").text(($("#TextEditor").val()));
-       // $("#Searched").text().highlight("#Search".val());
-    });
-
-    $("#Save").click(function(){
-        addState("#TextEditor".val());
-    });
-
-    $("#Undo").click(function(){
-        $("#TextEditor").val(getState());
-    });
-});
-</script>
-
-
+<!--Jeremy Eberhardt and Josh Chapman-->
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script> src="Functions.js"</script>
+    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://raw.github.com/bartaz/sandbox.js/master/jquery.highlight.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#Count").click(function(){
+                $("#Count").val($("#TextEditor").val().length);
+            });
+
+            $("#TextColor").click(function(){
+                $("#TextEditor").css('color', 'green');
+            });
+
+            $("#TextBackgroundColor").click(function(){
+                $("#TextEditor").css('backgroundColor', 'red');
+            });
+
+            $("#FontUp").click(function(){
+                $("#TextEditor").css('font-size', 'larger');
+            });
+
+            $("#FontDown").click(function(){
+                $("#TextEditor").css('font-size', 'smaller');
+            });
+
+            $("#Search").click(function(){
+                $("#Searched").text(($("#TextEditor").val()));
+            });
+            $("#Highlight").click(function(){
+                $("p").highlight("hey");
+            });
+            $("#Save").click(function(){
+                makeObject.save("#TextEditor".val());
+            });
+
+            $("#Undo").click(function(){
+                $("#TextEditor").val(makeObject.getCurrentState());
+            });
+            $("#Disappear").click(function(){
+                $("#picture").fadeOut();
+            });
+            $("#Reappear").click(function(){
+                $("#picture").fadeIn();
+            });
+
+        });
+    </script>
     <title>Text Editor</title>
 </head>
 <body>
@@ -58,6 +67,7 @@ $(document).ready(function() {
     <br />
     <br />
     <input type="button" id="Search" value="Search" /><br />
+    <input type="button" id="Highlight" value="Highlight" /><br />
 </form>
 <form>
     <input type="text" id="SearchText" size="15" value ="" /><br>
@@ -68,5 +78,12 @@ $(document).ready(function() {
 <form>
     <input type="text" id="TextEditor" value="" size="300" /><br>
 </form>
+<br />
+<form>
+    <input type="button" id="Disappear" value="Disappear" /><br />
+    <input type="button" id="Reappear" value="Reappear" /><br />
+</form>
+<img id="picture" src="http://images.forbes.com/media/lists/colleges/university-of-minnesota-morris_200x200.jpg" alt="To disappear!">
+<p>hey there</p>
 </body>
 </html>

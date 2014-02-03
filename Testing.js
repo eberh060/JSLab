@@ -5,6 +5,7 @@
 var assert = require("assert");
 var countChars = require('./Functions').countChars;
 var searchFor = require('./Functions').searchFor;
+var makeObject = require('./Functions').makeObject;
 
 describe('countChars', function(){
     describe('test 1', function(){
@@ -26,4 +27,5 @@ describe('searchFor', function(){
         })
     });
 });
+
 
