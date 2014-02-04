@@ -43,10 +43,10 @@
             $("#Undo").click(function(){
                 $("#TextEditor").val(makeObject.getCurrentState());
             });
-            $("#Disappear").click(function(){
+            $("#Disappear").click(function(){ <!-- Here are our two jquery implementations -->
                 $("#picture").fadeOut();
             });
-            $("#Reappear").click(function(){
+            $("#Reappear").click(function(){ <!-- Here are our two jquery implementations -->
                 $("#picture").fadeIn();
             });
 
